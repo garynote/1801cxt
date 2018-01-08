@@ -140,7 +140,6 @@ include("_login_chk.php");
 
 $(document).ready(function(){
 
-
   var msg = $("#invalid").val();
 
   if(msg !=undefined || msg != null)
@@ -153,13 +152,12 @@ $(document).ready(function(){
 
 });
 
-function keydown(e){
-  var e = e || event;
-  if (e.keyCode==13)
-  {
-  sub_login_form();
-  }
-}
+$(document).keypress(function (e) {
+    if (e.which == 13) {
+        sub_login_form();
+    }
+});
+
 
 function show_msg(msg)
 {
