@@ -3,7 +3,7 @@
 error_reporting(E_ALL & ~E_NOTICE);
 $server=0;
 if ($server==1) {
-  $db = new mysqli("pdb9.runhosting.com", "2470586_dream", "cY518888123","2470586_dream");
+  $db = new mysqli("localhost", "mlmsolution_net", "AEhr3yJ56y","mlmsolution_net");
 } else {
   $db = new mysqli("localhost", "root", "root","jj3m");
 }
