@@ -8,6 +8,7 @@ $list1 = ggPinList1();
 $list2 = ggPinList2();
 $list3 = ggPinList3();
 
+$ls = new stdClass();
 if ($pin_type == 1) {
   $ls->pin_name = array("Activation Pin","激活码","激活碼");
 } else if ($pin_type == 2) {
