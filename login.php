@@ -4,8 +4,6 @@ include("_login_chk.php");
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-
     <meta name="renderer" content="webkit" />
     <meta http-equiv="X-UA-Compatible" content="IE=EDGE, chrome=1">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -40,9 +38,9 @@ include("_login_chk.php");
                 <li>
                   <span>验证码</span>
                   <input type="text" placeholder="请输入验证码" id="verifyCode" name="verifyCode" class="pc-input-yzm">
-                  <a style="margin-left:-10px;" href="javascript:void(0)" class="red" onclick="document.getElementById('captcha_img').src='captcha.php?&random='+Math.random()">
-              <img id="captcha_img" src="captcha.php?&random="+Math.random() width="120px;" height="100%">
-          </a>
+                  <a style="margin-left:-5px;" href="javascript:void(0)" class="red" onclick="document.getElementById('captcha_img').src='captcha.php?&random='+Math.random()">
+                    <img id="captcha_img" src="captcha.php?&random="+Math.random() width="110px;" height="100%">
+                  </a>
 
                 </li>
                 <li><input type="button" id="btn_login" value="登录" class="pc-login-button" onclick="sub_login_form()"></li>
@@ -136,20 +134,10 @@ include("_login_chk.php");
     </div>
 </div>
 <script type="text/javascript">
-
-
 $(document).ready(function(){
-
-  var msg = $("#invalid").val();
-
-  if(msg !=undefined || msg != null)
-  {
-    //alert(msg);
-    //$("#msg_dialog").show();
-    //$("#msg_txt").html(msg);
-    //setTimeout(function(){$("#msg_dialog").hide();},2000);
-  }
-
+    $("#loginForm").submit(function(event){
+        event.preventDefault();
+    });
 });
 
 $(document).keypress(function (e) {
@@ -189,9 +177,6 @@ function sms_send()
   }
 
 }
-
-
-
 
 
 function get_back_pwd()
@@ -272,9 +257,6 @@ function get_back_pwd()
 
 }
 
-
-
-
 function sub_login_form()
 {
 
@@ -309,7 +291,6 @@ function sub_login_form()
       else
       {
         alert(result['msg']);
-        window.location.href=window.location.href;
       }
 
   },'json');
