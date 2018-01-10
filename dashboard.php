@@ -254,6 +254,7 @@ function ggStatus2($row) {
 }
 
 function ggPhAmounts() {
+  global $setup;
   $ret='';
   $phlist = explode(",",$setup->phlist);
   $count = count($phlist);

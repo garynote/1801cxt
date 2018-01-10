@@ -22,7 +22,6 @@ function show_fc_detail(fc_je,real_name,close_time,sy_time,zhifubao, weixin,bank
       $("#close_time").html(str);
   },1000);
 
-
   $("#real_name").html("真实姓名："+real_name);
   $("#pbank").html("开户行："+bank);
   $("#pbankkh").html("银行卡号："+bankkh);

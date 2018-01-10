@@ -17,7 +17,7 @@ $db->query("set names 'utf8'");
 
 date_default_timezone_set('Asia/Kuala_Lumpur');
 
-$setup = load_setup("cxt");
+$setup = load_setup();
 
 $user = load_user(0);
 
