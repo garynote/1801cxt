@@ -148,7 +148,7 @@ function sub_fc()
   var fc_amount = $("#fc_amount").val();
 
   var act = 'PH';
-  $("#btn_sub_fc").prop('disabled', 'disabled');
+  $("#btn_sub_fc").attr('disabled', true);
   $.post("_action_ph.php",{act:act,pass2:pass2,PinQty:kou_pin_nums,HelpAmount:fc_amount},function(result){
     if(result['status'] == 'success')
     {
@@ -158,6 +158,7 @@ function sub_fc()
     else
     {
       alert(result['msg']);
+      $("#btn_sub_fc").attr("disabled", false);
     }
   },"json");
 }

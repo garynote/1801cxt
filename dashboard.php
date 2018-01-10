@@ -125,6 +125,7 @@ function ggPhList() {
   $ret['list'] .= $list1 . "<br><br><br><br><br>";
   return $ret;
 }
+
 function ggGhList() {
   global $db,$user;
   $rs = $db->query("select * from tblhelp where mem_id = $user->id and g_type='G' and status<>'X' order by id desc;");
