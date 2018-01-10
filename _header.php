@@ -1,6 +1,6 @@
 <?
-include_once("_dbconfig.php");
-include_once("_ggFunctions.php");
+include_once("inc/ggDbconfig.php");
+include_once("inc/ggFunctions.php");
 if ($user->id == 0) {
     header("location: login.php");
 }

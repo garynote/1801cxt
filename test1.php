@@ -1,6 +1,5 @@
 <?
-
-include "_ggValidate.php";
+include "inc/ggValidate.php";
 
 $validator = new FormValidator();
 $validator->addValidation("Name","req","");

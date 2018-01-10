@@ -1,15 +1,14 @@
 <?
 
-include("_dbconfig.php");
-include("_ggFunctions.php");
-include("_ggValidate.php");
+include("inc/ggDbconfig.php");
+include("inc/ggFunctions.php");
+include("inc/ggValidate.php");
 
 $debug = false;
 $req = ($debug)? $_GET:$_POST;
 
-//$setup = load_setup();
-//$user = load_user(0);
-
+$ls = new stdClass();
+$
 $now = new datetime("now");
 $hour = $now->format("H");
 $min = $now->format("i");
@@ -28,9 +27,8 @@ if ($g_date=="") {
 	$days = ggDaysDiff($date);
 }
 
-$setup->phdays=2;
 $v = new FormValidator();
-$v->addValidation(1,$amount,"inlist=1000,2000","金額只開放 1000 和 2000 $amount");
+$v->addValidation(1,$amount,"inlist=".$setup->amount_list,"金額错误");
 $v->addValidation(2,$pin,"gt=1","排单币余额不足");
 $v->addValidation(3,$password2_5,"eq=".$password2,"二级密码错误");
 if ($setup->phdays>0) {

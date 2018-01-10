@@ -1,6 +1,6 @@
 <?
 session_start();
-include("_dbconfig.php");
+include("inc/ggDbconfig.php");
 
 $ErrMsg="";
 

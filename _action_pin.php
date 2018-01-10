@@ -1,7 +1,7 @@
 <?
-include ('_dbconfig.php');
-include ('_ggFunctions.php');
-include ('_ggValidate.php');
+include ('inc/ggDbconfig.php');
+include ('inc/ggFunctions.php');
+include ('inc/ggValidate.php');
 
 $debug=false;
 

@@ -1,6 +1,6 @@
 <?
-include("_dbconfig.php");
-include("_ggFunctions.php");
+include("inc/ggDbconfig.php");
+include("inc/ggFunctions.php");
 
 $username = $_POST['username'];
 $res = ggFetchObject("select username from tblmember where username='$username'");

@@ -17,7 +17,7 @@ $db->query("set names 'utf8'");
 
 date_default_timezone_set('Asia/Kuala_Lumpur');
 
-$setup = load_setup();
+$setup = load_setup("cxt");
 
 $user = load_user(0);
 
@@ -25,8 +25,7 @@ $lang = isset($_COOKIE['lang'])? $_COOKIE['lang']:0;
 
 
 function load_user($rid) {
-  global $db;
-  $setup = load_setup();
+  global $db,$setup;
   $user = array();
 
   if ($rid == 0) {
@@ -58,7 +57,7 @@ function load_user($rid) {
 
 function load_setup() {
   global $db;
-  $rs = $db->query("SELECT * FROM tblsetup") or die($db->error);
+  $rs = $db->query("SELECT * FROM tblsetup where app_code='cxt'") or die($db->error);
   $ret = $rs->fetch_object();
   return $ret;
 }

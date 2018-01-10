@@ -1,5 +1,5 @@
 <?
-include_once("_dbconfig.php");
+include_once("inc/ggDbconfig.php");
 $user = load_user(0);
 
 if ($user->logged==1) {

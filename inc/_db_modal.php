@@ -17,8 +17,7 @@
                                 <label class="col-sm-2 control-label m-t-im">金额</label>
                                 <div class="col-sm-3 m-t-im">
                                     <select onchange="change_pin_nums(this)" name="fc_amount" id="fc_amount" class="form-control" style="width:250px">
-                                        <option value="1000">1000</option>
-                                    <option value="2000">2000</option>
+                                        <? echo ggPhAmounts(); ?>
                                     </select>
                                 </div>
                             </div>

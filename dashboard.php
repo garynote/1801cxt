@@ -42,43 +42,39 @@ $ghlist = ggGhList();
 
 <? include("inc/_db_main_buttons.php"); ?>
 
-                <section class="hbox stretch">
-                    <section>
-                        <section class="vbox">
-                            <section class="scrollable padder">                                                                                            <section class="panel panel-default">
-                                    <header class="panel-heading bg-light">
-                                        <ul class="nav nav-tabs nav-justified">
-                                            <li class="active"><a href="#help" data-toggle="tab" style="color:red;font-size:25px;">进行中的付出单<label style="color:red;">&nbsp;<? echo $phlist['count']; ?></label></a></li>
-                                            <li class=""><a href="#shelp" data-toggle="tab" style="color:green;font-size:25px;" onclick="shelp_do()">进行中的收获单<label style="color:green;">&nbsp;<? echo $ghlist['count']; ?></label></a></li>
-                                        </ul>
-                                    </header>
-                                    <div id="div_scroll" class="panel-body">
-                                        <div class="tab-content">
-                                            <div class="tab-pane animated fadeIn active" id="help">
-                                                <div class="list-group no-radius row">
-                                                    <? echo $phlist['list']; ?>
-
-                                                </div>
-                                            </div>
-
-                                            <div class="tab-pane animated fadeIn" id="shelp">
-                                                <div class="list-group no-radius row">
-                                                    <? echo $ghlist['list']; ?>
-
-                                                </div>
-                                            </div>
-                                        </div>
+    <section class="hbox stretch">
+        <section>
+            <section class="vbox">
+                <section class="scrollable padder">                                                                                            <section class="panel panel-default">
+                        <header class="panel-heading bg-light">
+                            <ul class="nav nav-tabs nav-justified">
+                                <li class="active"><a href="#help" data-toggle="tab" style="color:red;font-size:25px;">进行中的付出单<label style="color:red;">&nbsp;<? echo $phlist['count']; ?></label></a></li>
+                                <li class=""><a href="#shelp" data-toggle="tab" style="color:green;font-size:25px;" onclick="shelp_do()">进行中的收获单<label style="color:green;">&nbsp;<? echo $ghlist['count']; ?></label></a></li>
+                            </ul>
+                        </header>
+                        <div id="div_scroll" class="panel-body">
+                            <div class="tab-content">
+                                <div class="tab-pane animated fadeIn active" id="help">
+                                    <div class="list-group no-radius row">
+                                        <? echo $phlist['list']; ?>
                                     </div>
-                                </section>
+                                </div>
 
-
-
-                            </section>
-                        </section>
+                                <div class="tab-pane animated fadeIn" id="shelp">
+                                    <div class="list-group no-radius row">
+                                        <? echo $ghlist['list']; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </section>
-                    <!-- side content -->
+
                 </section>
-                <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+            </section>
+        </section>
+        <!-- side content -->
+    </section>
+    <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
 
 <?
 include("inc/_db_script.php");
@@ -256,4 +252,16 @@ function ggStatus2($row) {
 
       return $ret;
 }
+
+function ggPhAmounts() {
+  $ret='';
+  $phlist = explode(",",$setup->phlist);
+  $count = count($phlist);
+  for ($i=0; $i < $count; $i++) {
+      $amt = $phlist[$i] * $setup->exrate;
+      $ret .= "<option value='$amt' ".($i==($count-1)? "selected":"").">$amt</option>";
+  }
+  return $ret;
+}
+
 ?>

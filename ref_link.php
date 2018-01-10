@@ -1,5 +1,5 @@
 <?
-include ("_dbconfig.php");
+include ("inc/ggDbconfig.php");
 include ("./tools//phpqrcode/qrlib.php");
 $file = "./upload/".$user->id.".png";
 QRcode::png("http://baidu.com/?tjr_id=".$user->username, $file, "H", 10, 2);
