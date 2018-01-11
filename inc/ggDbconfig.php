@@ -1,16 +1,23 @@
 <?
-//error_reporting(E_ALL);
-error_reporting(E_ALL & ~E_NOTICE);
-// Auto detect Local or Server
+/*----------
+1. Detect Local or server and connect DB
+2. Set timezone
+3. Load setup from database (Change to setup.php?)
+4.
+-----------*/
+
 $server = ($_SERVER['SERVER_ADDR']=="::1")? 0:1;
 
-if ($server==1) {
-  $db = new mysqli("localhost", "mlmsolution_net", "AEhr3yJ56y","mlmsolution_net");
-} else {
+if ($server==0) {
   $db = new mysqli("localhost", "root", "root","jj3m");
+  error_reporting(E_ALL);
+} else {
+  $db = new mysqli("localhost", "mlmsolution_net", "AEhr3yJ56y","mlmsolution_net");
+  error_reporting(E_ALL & ~E_NOTICE);
 }
+
 if ($db->connect_errno) {
-    echo "Failed to connect to MySQL: GG (" . $db->connect_errno . ") " . $db->connect_error;
+    echo "Failed to connect to MySQL: (" . $db->connect_errno . ") " . $db->connect_error;
     echo "<br>Server =".$server;
     exit();
 }
@@ -23,15 +30,20 @@ $setup = load_setup();
 
 $user = load_user(0);
 
-$lang = isset($_COOKIE['lang'])? $_COOKIE['lang']:0;
-
+if ($setup->lang >= 90) {
+  $lang = $setup->lang - 90;
+} else {
+  $lang = (isset($_COOKIE['lang']) && $_COOKIE['lang']>=0)? $_COOKIE['lang']:0;
+}
 
 function load_user($rid) {
-  global $db,$setup;
+  global $db;
+  $setup = load_setup();
   $user = array();
 
   if ($rid == 0) {
-    $pid = $_COOKIE["pid"];
+    // Need some check if what to remove notice of offset
+    $pid = isset($_COOKIE["pid"]) ? $_COOKIE["pid"]:"0-xxx";
 
     list ($user_id, $chid) = explode ('-', $pid, 2);
     if ($chid == md5($setup->masterpass)) {
@@ -44,7 +56,7 @@ function load_user($rid) {
     $rs_user = $db->query("SELECT * FROM tblmember where id = $user_id") or die ($db->error);
   }
 
-  if ($rs_user->num_rows==0) {
+  if ($rs_user=="" || $rs_user->num_rows==0) {
     $user = array('id' => 0,
             'logged'  => 0);
     $ret = (object) $user;
@@ -58,7 +70,7 @@ function load_user($rid) {
 }
 
 function load_setup() {
-  global $db;
+  global $db, $setup;
   $rs = $db->query("SELECT * FROM tblsetup where app_code='cxt'") or die($db->error);
   $ret = $rs->fetch_object();
   return $ret;
