@@ -142,7 +142,9 @@ $(document).ready(function(){
 
 $(document).keypress(function (e) {
     if (e.which == 13) {
-        sub_login_form();
+        if ($("#btn_login").attr("disabled") == false) {
+          sub_login_form();
+        }
     }
 });
 
@@ -283,6 +285,7 @@ function sub_login_form()
     return false;
   }
 
+  $("#btn_login").attr("disabled",true);
   $.post("login.php",{username:username,password:password,verifyCode:valicode},function(result){
       if(result['status']=='success')
       {
@@ -291,6 +294,7 @@ function sub_login_form()
       else
       {
         alert(result['msg']);
+        $("#btn_login").attr("disabled",false);
       }
 
   },'json');
