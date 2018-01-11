@@ -280,29 +280,29 @@ function shelp_do()
     $("#div_scroll").attr("style","height:"+h+"px");
   }
 
-  function change_pin_nums(obj)
+function change_pin_nums(obj)
+{
+  //var z = obj.value/1000;
+  var v = parseInt(obj.value);
+  if(v == 1000 || v == 2000)
   {
-    //var z = obj.value/1000;
-    var v = parseInt(obj.value);
-    if(v == 1000 || v == 2000)
-    {
-      $("#lbTxt").text( 1 );
-      $("#kou_pin_nums").val( 1 );
-    }
-    if(v == 3000 || v == 4000)
-    {
-      $("#lbTxt").text( 2 );
-      $("#kou_pin_nums").val( 2 );
-    }
-    if(v == 5000)
-    {
-      $("#lbTxt").text( 3 );
-      $("#kou_pin_nums").val( 3 );
-    }
+    $("#lbTxt").text( 1 );
+    $("#kou_pin_nums").val( 1 );
   }
+  if(v == 3000 || v == 4000)
+  {
+    $("#lbTxt").text( 2 );
+    $("#kou_pin_nums").val( 2 );
+  }
+  if(v == 5000)
+  {
+    $("#lbTxt").text( 3 );
+    $("#kou_pin_nums").val( 3 );
+  }
+}
 
   $(function(){
-          var h = parseInt($("#help").height())+parseInt($("#help").height())-50;
+      var h = parseInt($("#help").height())+parseInt($("#help").height())-50;
       $("#div_scroll").attr("style","height:"+h+"px");
 
 
