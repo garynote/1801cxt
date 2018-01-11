@@ -79,7 +79,7 @@ $ghlist = ggGhList();
 <?
 include("inc/_db_script.php");
 
-include("footer.php");
+include("_footer.php");
 
 function ggPhList() {
   global $db,$user;

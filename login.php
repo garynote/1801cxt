@@ -66,12 +66,6 @@ include("_login_chk.php");
     </div>
 </div>
 
-
-
-
-
-
-
 <div id="forgetPW_modal" class="modal fade in" aria-hidden="false">
     <div class="modal-dialog" style="margin-top:10%;">
         <div class="modal-content">
